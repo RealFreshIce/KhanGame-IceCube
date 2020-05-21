@@ -1,0 +1,435 @@
+//variables
+var logo = true;
+var menu = false;
+var credits = false;
+var instructions = false;
+var play = false;
+var space = getImage("space/background");
+var x1 = 0;
+var x2 = 0;
+var y1 =  width;
+var y2 = height;
+var t1 = 174;
+var R = 0;
+//draw function
+var draw = function() {
+
+    if(logo === true){
+if(y1>1){
+y1 = y1 -2;
+y2 = y2 -2;
+x1 = x1 +1;
+x2 = x2 +1;
+t1 = t1 -0.60;
+background(255, 255, 255);
+fill(10, 143, 204);
+stroke(0, 0, 0);
+rect(x1,x2,y1,y2);
+line(0,0,x1,x2);
+line(600,600,y1,y1);
+//   +   +  -   -
+var f = createFont("cursive",t1);
+fill(0, 0, 0);
+textFont(f);
+text("Melons & Ice Studio", x1,x2,y1,y2);
+if(y1 < 1){
+    logo=false;
+    menu=true;
+    x1 = 0;
+    x2 = 0;
+    y1 = 0;
+    y2 = 0; 
+    t1 = 0;}}    
+
+
+}
+    //Main menu
+    if(menu === true){
+        background(49, 63, 117);
+        R=R;
+        rotate(0);
+        credits=false;
+        instructions=false;
+        play=false;
+        logo=false;
+        
+        //rectangle to go around the buttons
+        image(getImage("avatars/leaf-green"),454,176);
+        image(getImage("avatars/leaf-green"),454,126);
+        
+        fill(82, 82, 82);
+        rect(100, 100, 400, 400, 20);
+        //buttons
+        fill(255, 255, 255, 160);
+        rect(150, 145, 100, 20, 10);
+        rect(150, 190, 100, 20, 10);
+        rect(150, 235, 100, 20, 10);
+        //button text
+        fill(0, 0, 0);
+        textSize(15);
+        text("Play", 185, 160);
+        text("Instructions", 164, 205);
+        text("Credits", 175, 250);
+        /***LOGO***/
+     var lx = 355; //343, 2
+     var yx = 222;
+     var xc1 = 0;
+     var xc2 = 0;
+     var xc3 = 0;
+     var yc1 = 0;
+     var yc2 = 0;
+     var yc3 = 0;
+     xc1 = lx + 5;
+     xc2 = lx +10;
+     xc3 = lx + 17;
+     yc1 = yx + 5;
+     yc2 = yx + 10;
+     yc3 = yx + 17;
+        fill(255, 255, 255);
+        text("Melons and Ice Studio",300,130);
+        rotate(R);
+        rect(lx,yx,40,40,-79);
+        fill(25, yx, 230);
+        rect(lx,yx,40,40,-61);
+        fill(73, 57, 163);
+        rect(lx,yx,40,40,-42);
+        fill(255, 0, 0);
+        rect(lx,yx,40,40,-30);
+        fill(0, 247, 255);
+        rect(lx,yx,40,40,-16);
+        fill(0, 64, 255);
+        rect(lx,yx,40,40,13);
+        fill(3, 247, 255);
+        rect(xc1,yc1,30,30,13);
+        fill(255, 255, 255);
+        rect(xc2,yc2,20,20,13);
+        fill(0, 0, 0);
+        rect(xc3,yc3,6,6,-6);
+        rotate(0);
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        
+        //check to see if the mouse is in the same place as the button
+        if(mouseX > 150 && mouseX < 250 && mouseY > 145 && mouseY < 165){
+            //check to see if the mouse is pressed
+            if(!mouseIsPressed){
+                // if mouse is not pressed light up the button
+                fill(255, 255, 255);
+                rect(150, 145, 100, 20, 10);
+                fill(0, 0, 0);
+                text("Play", 185, 160);
+            }
+            if(mouseIsPressed){
+                //if mouse is pressed go to play
+                menu = false;
+                play = true;
+            }
+        }
+        //check to see if the mouse is in the same place as the button
+        if(mouseX > 150 && mouseX < 250 && mouseY > 190 &&  mouseY < 210){
+            //check to see if the mouse is pressed
+            if(!mouseIsPressed){
+                //if the mouse is not pressed light up button
+                fill(255, 255, 255);
+                rect(150, 190, 100, 20, 10);
+                fill(0, 0, 0);
+                text("Instructions", 164, 205);
+            }
+            if(mouseIsPressed){
+                //if the mouse is pressed go to instructions
+                menu = false;
+                instructions = true;
+            }
+        }
+        //check to see if the mouse is in the same place as the button
+        if(mouseX > 150 && mouseX < 250 && mouseY > 235 && mouseY < 255){
+            //check to see if the mouse is pressed
+            if(!mouseIsPressed){
+                //if the mouse is not pressed light up button
+                fill(255, 255, 255);
+                rect(150, 235, 100, 20, 10);
+                fill(0, 0, 0);
+                text("Credits", 175, 250);
+            }
+            if(mouseIsPressed){
+                //if mouse is pressed go to credits
+                menu = false;
+                credits = true;
+                println("Youtube Channel:https://www.youtube.com/channel/UCPIDE3i6z-bLe7nyZrdAokA?view_as=subscriber\nAlso Vote this if you like it!");
+            }
+        }
+    }
+    //Credits
+    if(credits === true){
+        //background
+        image(space, 0, 0, 600, 600);
+        //text
+    /***CREDITS***/
+    textFont("cursive",41);
+    fill(255, 255, 255);
+    text("Melons and Ice Studio\n      Associated with\n            FreshIce",118,83,425,258);
+        //make button
+        fill(255, 255, 255, 160);
+        rect(150, 300, 100, 20, 10);
+        //make button text
+        fill(0, 0, 0);
+        textSize(15);
+        text("Back", 184, 315);
+        //if the mouse is in the same place as the button
+        if(mouseX > 150 && mouseX < 250 && mouseY > 300 && mouseY < 320){
+            //check to see if the mouse is pressed
+            if(!mouseIsPressed){
+                //if mouse is not pressed then light up button
+                fill(255, 255, 255);
+                rect(150, 300, 100, 20, 10);
+                fill(0, 0, 0);
+                text("Back", 184, 315);
+            }
+            if(mouseIsPressed){
+                //if mouse is pressed go to menu
+                credits = false;
+                menu = true;
+            }
+        }
+    }
+    //instructions
+    if(instructions === true){
+        //background
+        image(space, 0, 0, 600, 600);
+        //text
+    /***Info***/
+    var W = 600;
+    var H = 600;
+    fill(255, 255, 255);
+    textFont("cursive",34);
+    text("Information\n1)Have Fun.\n2)Controls are UP,DOWN,LEFT,RIGHT\n3)The DOWN key will teleport you back to the beginning of that level.\n4)You can change you characters color.\n5)Your goal is to get to the Teleporter.(The Green Box)\n6)Please Dont Cheat By Looking At The Game Code.\n7)The only code you need to touch is the color code, and the noLoop();.",2,5,W,H);
+       //make button
+        fill(255, 255, 255, 160);
+        rect(3, 561, 100, 20, 10);
+        //make button text
+        fill(0, 0, 0);
+        textSize(15);
+        text("Back", 37, 575);
+        //if the mouse is in the same place as the button
+        if(mouseX > 3 && mouseX < 103 && mouseY > 561 && mouseY < 581){
+            //check to see if the mouse is pressed
+            if(!mouseIsPressed){
+                //if mouse is not pressed then light up button
+                fill(255, 255, 255);
+                rect(3, 561, 100, 20, 10);
+                fill(0, 0, 0);
+                text("Back", 37, 575);
+            }
+            if(mouseIsPressed){
+                //if mouse is pressed go to menu
+                instructions = false;
+                menu = true;
+            }
+        }
+    }
+    //play
+    if(play === true){
+        //background
+        background(255, 255, 255);
+ 
+        /*********************CHARACTER-COLORS***************************/
+//---CharacterColors---\\
+var rd = color(255, 0, 0);   //All colors are for stroke and fill.
+var or = color(201, 108, 47);
+var yl = color(255, 255, 0);
+var lg = color(43, 255, 0);
+var gn = color(65, 107, 50);
+var lb = color(17, 100, 189);
+var db = color(31, 36, 59);
+var cy = color(8, 212, 202);
+var pp = color(134, 49, 168);
+var pk = color(250, 15, 121);
+var bk = color(0, 0, 0);
+var wt = color(255, 255, 255);
+var gy = color(97, 97, 97);
+var BLANK = color(255, 255, 255);//Put you custom colors here!
+var BLANK = color(255, 255, 255);//Share your color by posting
+var BLANK = color(255, 255, 255);//it in the T&T!
+var BLANK = color(255, 255, 255);
+var BLANK = color(255, 255, 255);
+/***************CHANGE-COLOR-HERE********************************/
+var St = wt;//Outline   CHANGE ONLY THE # AFTER THE EQUAL SIGN
+var Fl = lb;//Fill Color
+/***********************CHARACTER********************************/
+var JT = 0;
+var ST = 0.006;
+var TR = 10;
+var x = 5;
+var y = 480;
+draw = function() {
+background(60, 196, 214);
+image(getImage("cute/GrassBlock"),-1,435);
+image(getImage("cute/GrassBlock"),99,435);
+image(getImage("cute/GrassBlock"),199,435);
+image(getImage("cute/GrassBlock"),299,435);
+image(getImage("cute/GrassBlock"),399,435);
+image(getImage("cute/GrassBlock"),499,435);
+image(getImage("cute/Rock"),399,505,49,61);
+image(getImage("cute/Selector"),-1,420,57,116);
+text(JT,358,481);
+text(TR,279,481);
+fill(13, 255, 0);
+rect(0,0,37,33,47);
+if (keyIsPressed && keyCode === UP & JT <0.003){y=y-9; JT=JT+0.0001; }
+    else if(!keyIsPressed){y=y+10; }
+    if(JT>=0.003 & TR < 1){JT=0;  TR=100;} 
+    if(JT<0.003){}
+    else{ TR=TR-1;}
+    if(JT>0.003){y=y+3;}
+if (keyIsPressed && keyCode === LEFT){x = x - 3;y=y+2;    }
+if (x<0){x=0;}
+if (keyIsPressed && keyCode === RIGHT){x = x +3;y=y+2;}
+if(keyIsPressed && keyCode === DOWN){y=478; x =5;}
+keyPressed = function(){
+if(key.toString() === "e"){
+    x=x+8;
+    y=y-8;}
+if(key.toString() === 'q'){
+    x=x-8;
+    y=y-8;}};
+if (y<0){y=0;}
+else if (y > 480) {y = 480;}
+if (x>561){x=561;}
+stroke(St);
+fill(Fl);
+rect(x,y,40,41);
+textSize(40);
+text(x ,448,481);
+text(y,521,481);
+text(mouseX,20,31);
+text(mouseY,93, 31);
+//---lvlCollision---\\
+if (x>563){x=x -1;}
+else if (y>420 & y < 440 & x > 159){y =y+8;}
+else if (y>420 & y < 440 & x > 0& x<100){y =y+8;}
+else if (y < 410  & y > 366){y =368;}
+else if (y<5){y=5;}
+else if (y > 480) {y = 480;}
+else if(y<480){y=y+6;} 
+if(y<365 & y>309 & x<380){y=y+3;}
+if(y<365 & y>309 & x>420){y=y+3;}
+else if(y<340 & y>280){y=280;}
+if(y<280 & y>240 & x<113){y=y+3;}
+if(y<280 & y>240 & x>152){y=y+3;}
+if(y<280 & y>200){y=200;}
+if(y<206 & y>170 & x<556){y=y+3;}
+if(y<200 & y>140){y=133;}
+if(y<137 & y>99 & x<143){y=y+3;}
+if(y<137 & y>99 & x>183){y=y+3;}
+if(y<105 & y>65){y=59;}
+if(y<64 & y>30 & x<453){y=y+3;}
+if(y<64 & y>30 & x>492){y=y+3;}
+if(y<30 & y>0){y=0;}
+if(mouseIsPressed){y=mouseY; x=mouseX;}
+//---lvls---\\   
+noStroke();
+fill(43, 43, 43);
+rect(200,410,401,36,7);
+rect(115,410,97,36,7);
+rect(0,410,125,36,3);
+rect(0,324,width,36);
+rect(0,245,width,36);
+rect(0,171,width,36);
+rect(0,100,width,36);
+rect(0,31,width,36);
+
+
+//---SECOND-LEVEL---//
+if(y < 29 & x<35){
+draw = function() {
+image(getImage("cute/GrassBlock"),-1,435);
+image(getImage("cute/GrassBlock"),99,435);
+image(getImage("cute/GrassBlock"),199,435);
+image(getImage("cute/GrassBlock"),299,435);
+image(getImage("cute/GrassBlock"),399,435);
+image(getImage("cute/GrassBlock"),499,435);
+image(getImage("cute/Rock"),399,505,49,61);
+image(getImage("cute/Selector"),-1,420,57,116);
+text(JT,358,481);
+text(TR,279,481);
+fill(13, 255, 0);
+rect(0,0,37,33,47);
+if (keyIsPressed && keyCode === UP & JT <0.003){y=y-9; JT=JT+0.0001; }
+    else if(!keyIsPressed){y=y+10; }
+    if(JT>=0.003 & TR < 1){JT=0;  TR=100;} 
+    if(JT<0.003){}
+    else{ TR=TR-1;}
+    if(JT>0.003){y=y+3;}
+if (keyIsPressed && keyCode === LEFT){x = x - 3;y=y+2;    }
+if (x<0){x=0;}
+if (keyIsPressed && keyCode === RIGHT){x = x +3;y=y+2;}
+if(keyIsPressed && keyCode === DOWN){y=478; x =5;}
+keyPressed = function(){
+if(key.toString() === "e"){
+    x=x+8;
+    y=y-8;}
+if(key.toString() === 'q'){
+    x=x-8;
+    y=y-8;}};
+if(y<480){y=y+6;} 
+if (x>563){x=x -1;}    
+else if (y<5){y=5;}
+else if (y > 480) {y = 480;}    
+fill(255, 255, 255);
+rect(0,0,width,height);
+stroke(St);
+fill(Fl);
+rect(x,y,40,41);
+textSize(40);
+text(x ,219,197);
+text(y,300,197);
+   //THIRD LEVEL
+if(y<7 & x>562){
+draw = function() {
+if (keyIsPressed && keyCode === UP){y=y-8;}
+if (keyIsPressed && keyCode === LEFT){x = x - 1;    }
+else if (x<0){x=0;}
+if (keyIsPressed && keyCode === RIGHT){x = x +1;}
+if(keyIsPressed && keyCode === DOWN){y=480; x =2;}
+else if(y<480){y=y+6;} 
+if (x>563){x=x -1;}    
+else if (y<5){y=5;}
+else if (y > 480) {y = 480;}    
+fill(18, 36, 56);
+rect(0,0,width,height);
+stroke(St);
+fill(Fl);
+rect(x,y,40,41);
+textSize(40);
+text(x ,219,197);
+text(y,300,197);
+text("its getting colder and darker",20,40);};}};}};
+//--------------------------------------------------------------//
+
+
+
+
+
+
+
+
+}};
+
+        
+        
+        
+        
+        
+        
+        
+        
+
+        
+    
